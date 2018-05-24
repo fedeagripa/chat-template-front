@@ -39,7 +39,7 @@ $ ->
 			error: ->
 				console.log('no chats')
 				$('.chat-list').append('<h2> ERROR: NO CHATS </h2>')
-	
+
 	$(document).on 'click', '.chat-item', () ->
 		chat = this.id
 		$('.chat-item').css('background-color', 'white')
@@ -55,7 +55,7 @@ $ ->
 			headers: {
 				'access-token': token,
 				'uid': user,
-				'client': client 
+				'client': client
 			}
 			data: { page: 1 }
 			success: (data) ->
@@ -70,6 +70,7 @@ $ ->
 	$('#send-message').on 'keypress', (e) ->
 		code = e.which
 		if (code == 13)
+			chat = $('.chat-item.selected').attr('id')
 			input = $(this).val()
-			App.chat.send_message(input, chat_to)
+			App.chat.send_message(input, chat)
 			$(this).val('')

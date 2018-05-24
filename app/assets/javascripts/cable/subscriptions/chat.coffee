@@ -4,8 +4,8 @@ window.openChat = (user_id) ->
     received: (data) ->
       @appendLine(data)
 
-    send_message: (data, user) ->
-      @perform 'send_message', message: data, user: user
+    send_message: (data, chat_id) ->
+      @perform 'send_message', message: data, chat_id: chat_id
 
     appendLine: (data) ->
       html = @createLine(data)
